@@ -9,6 +9,7 @@ Projet personnel de création d'un site d'agence fictive de photographes freelan
 - Node.js
 - Express.js
 - Mongoose
+- Multer
 
 **Base de Données**
 
