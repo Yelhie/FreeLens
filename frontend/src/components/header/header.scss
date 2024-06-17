@@ -1,0 +1,30 @@
+header {
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: 80px;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(var(--color-secondary-rgb), 0.28);
+
+  .logo {
+    color: var(--color-primary);
+    display: flex;
+    margin: 20px;
+    height: 34px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px;
+    gap: 15px;
+
+    li {
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+}

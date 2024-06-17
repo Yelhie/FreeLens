@@ -16,6 +16,7 @@ app.use(cors());
 
 // Routes
 app.use("/api/", require("./routes/index.routes"));
+app.use("/uploads", express.static("uploads"));
 
 app.listen(port, () => {
   console.log(`Serveur en cours d'exécution sur le port : ${port}`);

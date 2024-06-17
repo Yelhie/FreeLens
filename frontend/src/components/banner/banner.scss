@@ -1,0 +1,36 @@
+.banner-container {
+  .banner-img {
+    margin-top: -160px;
+    width: var(--max-width);
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: -1;
+    position: absolute;
+  }
+
+  .banner-text {
+    background: linear-gradient(
+      360deg,
+      rgba(var(--color-secondary-rgb), 0.21) 40%,
+      rgba(var(--color-secondary-rgb), 0.58) 100%
+    );
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    margin: 80px 0 0 20px;
+    padding: 20px;
+    max-width: 600px;
+
+    h1 {
+      font-size: 40px;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--color-mid);
+      padding: 5px 0;
+      line-height: 130%;
+    }
+  }
+}

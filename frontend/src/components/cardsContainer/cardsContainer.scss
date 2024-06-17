@@ -1,0 +1,47 @@
+.photographer-section {
+  padding-top: 60px;
+
+  h2,
+  p {
+    color: var(--color-mid);
+  }
+
+  h2 {
+    font-size: 35px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  .photographer-section-header {
+    padding: 60px 0 10px 20px;
+  }
+
+  .photographer-cards-container {
+    background: linear-gradient(
+      360deg,
+      rgba(var(--color-secondary-rgb), 0.58) 30%,
+      rgba(var(--color-secondary-rgb), 0) 100%
+    );
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+    padding: 20px;
+
+    h2 {
+      color: var(--color-primary);
+      font-size: 35px;
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
