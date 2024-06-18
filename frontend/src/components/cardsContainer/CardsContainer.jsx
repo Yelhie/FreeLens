@@ -9,7 +9,7 @@ export const CardsContainer = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/photographes")
+    fetch(`${import.meta.env.VITE_API_URL}/api/photographes/`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

@@ -13,16 +13,16 @@ export const Footer = () => {
           </p>
           <div className="footer-social-link">
             <Link to="#">
-              <img src="icones/facebook.webp" alt="logo facebook" />
+              <img src="/icones/facebook.webp" alt="logo facebook" />
             </Link>
             <Link to="#">
-              <img src="icones/blueky.webp" alt="logo bluesky" />
+              <img src="/icones/blueky.webp" alt="logo bluesky" />
             </Link>
             <Link to="#">
-              <img src="icones/linkedin.webp" alt="logo linkedin" />
+              <img src="/icones/linkedin.webp" alt="logo linkedin" />
             </Link>
             <Link to="#">
-              <img src="icones/x.webp" alt="logo X" />
+              <img src="/icones/x.webp" alt="logo X" />
             </Link>
           </div>
           <p className="copyright">

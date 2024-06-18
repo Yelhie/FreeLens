@@ -6,7 +6,7 @@ export const Header = () => {
     <header>
       <div className="logo-container">
         <Link to="/">
-          <img src="icones/logo.webp" className="logo" alt="FreeLens logo" />
+          <img src="/icones/logo.webp" className="logo" alt="FreeLens logo" />
         </Link>
       </div>
       <nav>

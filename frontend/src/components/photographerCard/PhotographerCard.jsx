@@ -2,9 +2,8 @@ import "./photographerCard.scss";
 
 export const PhotographerCard = ({ photographer }) => {
   const avatarUrl = `${
-    import.meta.env.VITE_API_BASE_URL
+    import.meta.env.VITE_API_URL
   }/${photographer.avatarPath.replace(/\\/g, "/")}`;
-
   return (
     <article className="card">
       <div className="img-container">
