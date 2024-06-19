@@ -1,0 +1,56 @@
+.photographer-profile {
+  background-color: rgba(var(--color-secondary-rgb), 0.28);
+  padding: 20px;
+
+  .photographer-profile-container {
+    grid-template-columns: 220px 1fr;
+    display: grid;
+    background-color: rgba(var(--color-secondary-rgb), 0.28);
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
+  }
+  .photographer-profile-avatar img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+    border: 2px solid var(--color-dark);
+  }
+
+  .photographer-profile-avatar #likes {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+
+  .photographer-profile-description {
+    color: var(--color-mid);
+
+    h1 {
+      color: var(--color-primary);
+      font-size: 45px;
+      padding-bottom: 4px;
+    }
+
+    .localisation {
+      font-size: 22px;
+      margin: 0 0 5px 0;
+    }
+    .price {
+      padding-bottom: 3px;
+      font-size: 18px;
+    }
+
+    p {
+      line-height: 1.2;
+    }
+
+    .apropos {
+      font-style: italic;
+    }
+  }
+  .contact-button {
+    margin-top: 10px;
+  }
+}

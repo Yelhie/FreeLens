@@ -1,37 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPhotographers } from "../../redux/thunks/photographersThunks";
 import { PhotographerCard } from "../photographerCard/PhotographerCard";
 import { Link } from "react-router-dom";
 import "./cardsContainer.scss";
 
 export const CardsContainer = () => {
-  const [photographers, setPhotographers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { photographers, loading, error } = useSelector(
+    (state) => state.photographers
+  );
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/photographes/`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setPhotographers(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+    dispatch(fetchPhotographers());
+  }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Chargement...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Erreur: {error}</div>;
   }
 
   return (

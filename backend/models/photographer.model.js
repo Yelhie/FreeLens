@@ -22,6 +22,10 @@ const photographerSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    apropos: {
+      type: String,
+      maxlength: 230,
+    },
   },
   { collection: "photographers" }
 );

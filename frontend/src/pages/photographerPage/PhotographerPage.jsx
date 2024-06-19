@@ -1,5 +1,9 @@
-import React from "react";
+import { PhotographerProfile } from "../../components/photographerProfile/PhotographerProfile";
 
 export const PhotographerPage = () => {
-  return <div>PhotographerPage</div>;
+  return (
+    <>
+      <PhotographerProfile />
+    </>
+  );
 };

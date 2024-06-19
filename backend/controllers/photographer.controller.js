@@ -49,6 +49,15 @@ module.exports.addPhotographer = async (req, res) => {
 
 //Modifie un profil de photographe via son ID
 module.exports.editPhotographer = async (req, res) => {
+  const { apropos } = req.body;
+
+  if (apropos && apropos.length > 230) {
+    return res.status(400).json({
+      message:
+        "Le champ 'à propos' ne peut pas contenir plus de 230 caractères.",
+    });
+  }
+
   try {
     const photographes = await PhotographeModel.findById(req.params.id);
 
