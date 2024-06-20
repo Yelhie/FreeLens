@@ -1,0 +1,26 @@
+.media-card {
+  color: var(--color-mid);
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 10px;
+
+  .media-img {
+    border-radius: 8px;
+    border: 2px solid var(--color-dark);
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+  }
+
+  .media-infos {
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .likes-container {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPhotographers } from "../../redux/thunks/photographersThunks";
+import { fetchPhotographersThunk } from "../../redux/thunks/photographersThunks";
 import { PhotographerCard } from "../photographerCard/PhotographerCard";
-import { Link } from "react-router-dom";
 import "./cardsContainer.scss";
 
 export const CardsContainer = () => {
@@ -12,7 +11,7 @@ export const CardsContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchPhotographers());
+    dispatch(fetchPhotographersThunk());
   }, [dispatch]);
 
   if (loading) {
@@ -32,9 +31,10 @@ export const CardsContainer = () => {
 
       <div className="photographer-cards-container">
         {photographers.map((photographer) => (
-          <Link key={photographer._id} to={`/photographer/${photographer._id}`}>
-            <PhotographerCard photographer={photographer} />
-          </Link>
+          <PhotographerCard
+            key={photographer._id}
+            photographer={photographer}
+          />
         ))}
       </div>
     </section>

@@ -1,0 +1,11 @@
+.section-photographer-gallery {
+  background-color: rgba(var(--color-secondary-rgb), 0.28);
+  padding: 0 10px;
+
+  .gallery {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}

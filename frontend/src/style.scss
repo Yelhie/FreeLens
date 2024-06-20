@@ -162,6 +162,13 @@ a:hover {
   color: var(--color-primary);
 }
 
+// Styles des icones like
+#likes {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
 :root {
   --font-family: "DM Sans", sans-serif;
   --max-width: 1300px;

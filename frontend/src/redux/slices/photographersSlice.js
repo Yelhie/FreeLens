@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  fetchPhotographers,
-  fetchPhotographerById,
+  fetchPhotographersThunk,
+  fetchPhotographerByIdThunk,
 } from "../thunks/photographersThunks";
 
 const handlePending = (state) => {
@@ -34,12 +34,15 @@ const photographersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPhotographers.pending, handlePending)
-      .addCase(fetchPhotographers.fulfilled, handlePhotographersFulfilled)
-      .addCase(fetchPhotographers.rejected, handleRejected)
-      .addCase(fetchPhotographerById.pending, handlePending)
-      .addCase(fetchPhotographerById.fulfilled, handlePhotographerByIdFulfilled)
-      .addCase(fetchPhotographerById.rejected, handleRejected);
+      .addCase(fetchPhotographersThunk.pending, handlePending)
+      .addCase(fetchPhotographersThunk.fulfilled, handlePhotographersFulfilled)
+      .addCase(fetchPhotographersThunk.rejected, handleRejected)
+      .addCase(fetchPhotographerByIdThunk.pending, handlePending)
+      .addCase(
+        fetchPhotographerByIdThunk.fulfilled,
+        handlePhotographerByIdFulfilled
+      )
+      .addCase(fetchPhotographerByIdThunk.rejected, handleRejected);
   },
 });
 export default photographersSlice.reducer;

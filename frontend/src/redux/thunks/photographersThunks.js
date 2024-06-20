@@ -4,7 +4,7 @@ import {
   fetchPhotographerByIdAPI,
 } from "../utils/api";
 
-export const fetchPhotographers = createAsyncThunk(
+export const fetchPhotographersThunk = createAsyncThunk(
   "photographers/fetchPhotographers",
   async () => {
     const data = await fetchAllPhotographersAPI();
@@ -12,7 +12,7 @@ export const fetchPhotographers = createAsyncThunk(
   }
 );
 
-export const fetchPhotographerById = createAsyncThunk(
+export const fetchPhotographerByIdThunk = createAsyncThunk(
   "photographers/fetchPhotographerById",
   async (id) => {
     const data = await fetchPhotographerByIdAPI(id);

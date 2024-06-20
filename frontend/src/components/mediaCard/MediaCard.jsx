@@ -1,23 +1,22 @@
-export const MediaCard = ({ photographer }) => {
-  const avatarUrl = `${
-    import.meta.env.VITE_API_URL
-  }/${photographer.avatarPath.replace(/\\/g, "/")}`;
+import "./mediaCard.scss";
+
+export const MediaCard = ({ media }) => {
+  const fileUrl = `${import.meta.env.VITE_API_URL}/${media.filePath.replace(
+    /\\/g,
+    "/"
+  )}`;
 
   return (
-    <article className="card">
-      <div className="img-container">
-        <img
-          src={avatarUrl}
-          className="photographer-picture"
-          alt={`Photo de profile de ${photographer.name}`}
-        />
-      </div>
-      <div className="text-container">
-        <h2>{photographer.name}</h2>
-        <p className="localisation">
-          {photographer.city}, {photographer.country}
+    <article className="media-card">
+      <img src={fileUrl} className="media-img" alt={`Photo de ${media.tite}`} />
+      <div className="media-infos">
+        <p className="title">{media.title}</p>
+        <p className="likes-container">
+          {media.likes}
+          <span id="likes" className="material-symbols-outlined">
+            favorite
+          </span>
         </p>
-        <p className="price">{photographer.price}€/jour</p>
       </div>
     </article>
   );

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPhotographerById } from "../../redux/thunks/photographersThunks";
+import { fetchPhotographerByIdThunk } from "../../redux/thunks/photographersThunks";
 import { useParams } from "react-router-dom";
 import "./photographerProfile.scss";
 
@@ -15,7 +15,7 @@ export const PhotographerProfile = () => {
 
   useEffect(() => {
     if (!photographer) {
-      dispatch(fetchPhotographerById(id));
+      dispatch(fetchPhotographerByIdThunk(id));
     }
   }, [dispatch, id, photographer]);
 
@@ -40,9 +40,9 @@ export const PhotographerProfile = () => {
       <div className="photographer-profile-container">
         <div className="photographer-profile-avatar">
           <img src={avatarUrl} alt={`Profil de ${photographer.name}`} />
-          <span id="likes" className="material-symbols-outlined">
+          {/* <span id="likes" className="material-symbols-outlined">
             favorite
-          </span>
+          </span> */}
         </div>
         <div className="photographer-profile-description">
           <h1 className="photographer-name">{photographer.name}</h1>
