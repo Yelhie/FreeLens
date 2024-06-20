@@ -51,11 +51,11 @@ Vous pouvez consulter la documentation Swagger à l'adresse http://localhost:300
 
 **Home page**
 
-![FreeLens home page](https://github.com/Yelhie/FreeLens/blob/master/screenshot/freelens_240501.jpg)
+![FreeLens home page](https://github.com/Yelhie/FreeLens/blob/master/screenshots/freelens_240501.jpg)
 
 **Page profile photographe**
 
-![FreeLens page profile](https://github.com/Yelhie/FreeLens/blob/master/screenshot/freelens_240503.jpg)
+![FreeLens page profile](https://github.com/Yelhie/FreeLens/blob/master/screenshots/freelens_240503.jpg)
 
 ## Informations supplémentaires
 
