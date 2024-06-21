@@ -2,6 +2,29 @@
   background-color: rgba(var(--color-secondary-rgb), 0.28);
   padding: 0 10px;
 
+  .sort-selector {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 5px;
+    font-size: 20px;
+    margin-right: 18px;
+    color: var(--color-light);
+
+    label {
+      margin-right: 5px;
+    }
+
+    select {
+      padding: 2px;
+      border-radius: 5px;
+      background-color: #404a5760;
+      color: var(--color-light);
+      border: 2px solid var(--color-dark);
+      font-size: 18px;
+      cursor: pointer;
+    }
+  }
   .gallery {
     padding: 10px;
     display: grid;
