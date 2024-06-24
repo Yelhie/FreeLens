@@ -53,9 +53,33 @@ Projet personnel de création d'un site d'agence fictive de photographes freelan
 
 ## Installation
 
-A venir...
+1. Dans le dossier backend exécutez les commandes npm suivantes :
 
-Vous pouvez consulter la documentation Swagger à l'adresse http://localhost:3000/api-docs.
+```bash
+# Installer les dépendances dans le dossier backend
+npm install
+
+# Démarrer le serveur local (port 3000)
+npm run server start
+
+```
+
+2. Ajouter à votre base de donnée MongoDB les fichiers json présent dans le dossier ImportData.
+
+J'ai laissé les fichiers .env dans le commit pour faciliter l'installation du projet en local. Si vous souhaitez utiliser un cluster MongoDB, vous devrez changer l'adresse MONGO_URL présente dans le fichier .env du dossier backend avec l'adresse de votre cluster MongoDB.
+
+3. Dans le dossier frontend exécutez les commandes npm suivantes :
+
+```bash
+# Installer les dépendances dans le dossier frontend
+npm install
+
+# Démarrer le projet
+npm run dev
+
+```
+
+Enfin, vous pouvez consulter la documentation Swaggerde de l'API à l'adresse http://localhost:3000/api-docs.
 
 ## Screenshots
 

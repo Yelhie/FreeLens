@@ -2,7 +2,6 @@
 /node_modules/
 
 # Fichiers d'environnement contenant des secrets
-.env
 .env.local
 .env.*.local
 

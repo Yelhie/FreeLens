@@ -58,6 +58,7 @@ module.exports.addPhotographer = async (req, res) => {
       city: req.body.city,
       country: req.body.country,
       price: req.body.price,
+      apropos: req.body.apropos,
     });
     res.status(200).json(newPhotographer);
   } catch (error) {

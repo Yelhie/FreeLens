@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "6653346b97547adba46056bb"
+  },
+  "name": "Hua Wèi",
+  "avatarPath": "uploads\\1716728939641.webp",
+  "city": "Londre",
+  "country": "Angleterre",
+  "price": 420,
+  "__v": 0,
+  "apropos": "Résidant à Londres, Hua Wèi est une photographe talentueuse reconnu pour ses superbes photographies de paysages. Avec un œil affûté pour la composition et la lumière, Hua crée des images qui transportent l'observateur au cœur de la nature."
+},
+{
+  "_id": {
+    "$oid": "6653352c97547adba46056bd"
+  },
+  "name": "Louise Morel",
+  "avatarPath": "uploads\\1716729132688.webp",
+  "city": "Paris",
+  "country": "France",
+  "price": 380,
+  "__v": 0,
+  "apropos": "Résidant à Paris, Louise Morel se distingue par ses portraits néon aux teintes éclatantes. Ses œuvres audacieuses capturent l'énergie et l'émotion de ses sujets, créant des images à la fois modernes et captivantes."
+},
+{
+  "_id": {
+    "$oid": "6653359497547adba46056bf"
+  },
+  "name": "Warren Harris",
+  "avatarPath": "uploads\\1716729236150.webp",
+  "city": "Montreal",
+  "country": "Canada",
+  "price": 450,
+  "__v": 0,
+  "apropos": "Warren est un photographe renommé pour son expertise en photographie océanique. Grâce à son œil attentif et sa passion pour les paysages marins, il immortalise la majesté et la profondeur des océans dans des clichés spectaculaires et inspirants."
+},
+{
+  "_id": {
+    "$oid": "665336db97547adba46056c2"
+  },
+  "name": "Iris Delos",
+  "avatarPath": "uploads\\1716729563094.webp",
+  "city": "Kassel",
+  "country": "Allemagne",
+  "price": 350,
+  "__v": 0,
+  "apropos": "Iris est reconnue pour ses créations innovantes et élégantes. Sa passion pour le design se reflète dans chaque projet, où elle allie esthétique et photographie pour créer des œuvres uniques et inspirantes."
+},
+{
+  "_id": {
+    "$oid": "6653374797547adba46056c4"
+  },
+  "name": "Chetan Devi",
+  "avatarPath": "uploads\\1716729671405.webp",
+  "city": "New Delhi",
+  "country": "Inde",
+  "price": 375,
+  "__v": 0,
+  "apropos": "Chetan est un aventurier passionné spécialisé dans la photographie animalière. Ses expéditions à travers les paysages sauvages capturent la majesté et la diversité de la faune, révélant la beauté et la complexité de la nature dans toute sa splendeur."
+},
+{
+  "_id": {
+    "$oid": "6653377c97547adba46056c6"
+  },
+  "name": "Marie Oliveira",
+  "avatarPath": "uploads\\1716748831309.webp",
+  "city": "Lisbonne",
+  "country": "Portugal",
+  "price": 390,
+  "__v": 0,
+  "apropos": "Marie Oliveira, photographe talentueuse basée à Lisbonne, Portugal, se spécialise dans les portraits de femmes. Grâce à son talent pour les couleurs vives et son sens artistique, Marie crée des images dynamiques qui mettent en lumière l'essence et l'énergie célèbrent la beauté et la force féminine."
+},
+{
+  "_id": {
+    "$oid": "66538195ae4d2f634da72768"
+  },
+  "name": "Liam Smith",
+  "avatarPath": "uploads\\1716748693355.webp",
+  "city": "Bruges",
+  "country": "Belgique",
+  "price": 385,
+  "__v": 0,
+  "apropos": "Liam Smith, photographe basé à Bruges, Belgique, excelle dans la photographie de portrait et scène de vie en noir et blanc. Ses images intemporelles capturent la beauté et l'authenticité des moments quotidiens, transformant chaque scène en une œuvre d'art émouvante."
+},
+{
+  "_id": {
+    "$oid": "6653821fae4d2f634da7276b"
+  },
+  "name": "Yuko Araki",
+  "avatarPath": "uploads\\1716729724764.webp",
+  "city": "Fukuoka",
+  "country": "Japon",
+  "price": 370,
+  "__v": 0,
+  "apropos": "Photographe basée à Fukuoka, Yuko capture pour vous la beauté du monde à travers ses paysages époustouflants et ses portraits émouvants. Avec une passion pour la lumière et les détails, Yuko transforme chaque instant en une œuvre d'art intemporelle."
+}]

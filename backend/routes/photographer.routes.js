@@ -52,6 +52,9 @@ const {
  *                   avatarPath:
  *                     type: string
  *                     description: The path to the photographer's avatar image.
+ *                   apropos:
+ *                    type: string
+ *                    description: A short description of the photographer.
  *             examples:
  *               example:
  *                 value: [
@@ -61,15 +64,69 @@ const {
  *                     "city": "Paris",
  *                     "country": "France",
  *                     "price": 150,
- *                     "avatarPath": "/uploads/avatars/johndoe.jpg"
+ *                     "avatarPath": "/uploads/avatars/johndoe.jpg",
+ *                     "apropos": "Photographe professionnel basé à Paris, spécialisé dans la photographie de portrait et de mariage."
  *                   }
  *                 ]
  */
 // Routes pour récupérer tout les profils des photographes
 router.get("/", getAllPhotographers);
 
+/**
+ * @swagger
+ * /api/photographers/valid:
+ *   get:
+ *     summary: Retrieve all valid photographers
+ *     tags: [Photographers]
+ *     description: Retrieve a list of all freelance photographers who have complete and valid profiles.
+ *     responses:
+ *       200:
+ *         description: A list of valid photographers
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                     description: The photographer ID.
+ *                   name:
+ *                     type: string
+ *                     description: The name of the photographer.
+ *                   city:
+ *                     type: string
+ *                     description: The city where the photographer is based.
+ *                   country:
+ *                     type: string
+ *                     description: The country where the photographer is based.
+ *                   price:
+ *                     type: number
+ *                     description: The price for the photographer's services.
+ *                   avatarPath:
+ *                     type: string
+ *                     description: The path to the photographer's avatar image.
+ *                   apropos:
+ *                     type: string
+ *                     description: A short description of the photographer.
+ *             examples:
+ *               example:
+ *                 value: [
+ *                   {
+ *                     "id": "60d0fe4f5311236168a109ca",
+ *                     "name": "Jane Doe",
+ *                     "city": "New York",
+ *                     "country": "USA",
+ *                     "price": 200,
+ *                     "avatarPath": "/uploads/avatars/janedoe.jpg",
+ *                     "apropos": "Professional photographer based in New York, specialized in portrait and wedding photography."
+ *                   }
+ *                 ]
+ */
 // Routes pour récupérer tous les profils de photographes dont les informations sont valides
 router.get("/valid", getAllValidPhotographers);
+
 /**
  * @swagger
  * /api/photographers/{id}:
@@ -110,6 +167,9 @@ router.get("/valid", getAllValidPhotographers);
  *                 avatarPath:
  *                   type: string
  *                   description: The path to the photographer's avatar image.
+ *                 apropos:
+ *                   type: string
+ *                   description: A short description of the photographer.
  *             examples:
  *               example:
  *                 value:
@@ -119,7 +179,8 @@ router.get("/valid", getAllValidPhotographers);
  *                     "city": "Paris",
  *                     "country": "France",
  *                     "price": 150,
- *                     "avatarPath": "/uploads/avatars/johndoe.jpg"
+ *                     "avatarPath": "/uploads/avatars/johndoe.jpg",
+ *                     "apropos": "Photographe professionnel basé à Paris, spécialisé dans la photographie de portrait et de mariage."
  *                   }
  */
 // Routes pour récupérer les infos d'un seul photographe via son ID
@@ -155,6 +216,9 @@ router.get("/:id", getPhotographer);
  *               price:
  *                 type: number
  *                 description: The price for the photographer's services.
+ *               apropos:
+ *                  type: string
+ *                  description: A short description of the photographer.
  *     responses:
  *       200:
  *         description: Photographer added successfully
@@ -201,6 +265,9 @@ router.post("/", upload.single("avatarPath"), addPhotographer);
  *               price:
  *                 type: number
  *                 description: The price for the photographer's services.
+ *               apropos:
+ *                 type: string
+ *                 description: A short description of the photographer.
  *     responses:
  *       200:
  *         description: Photographer updated successfully
