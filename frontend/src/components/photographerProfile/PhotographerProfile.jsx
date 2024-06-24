@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotographerByIdThunk } from "../../redux/thunks/photographersThunks";
 import { useParams } from "react-router-dom";
+import { Loader } from "../loader/Loader";
 import "./photographerProfile.scss";
 
 export const PhotographerProfile = () => {
@@ -19,13 +20,8 @@ export const PhotographerProfile = () => {
     }
   }, [dispatch, id, photographer]);
 
-  if (loading) {
-    return <div>Chargement...</div>;
-  }
-
-  if (error) {
-    return <div>Erreur: {error}</div>;
-  }
+  if (loading) return <Loader />;
+  if (error) return <div>Erreur : {error}</div>;
 
   if (!photographer) {
     return <div>Photographe non trouvé</div>;

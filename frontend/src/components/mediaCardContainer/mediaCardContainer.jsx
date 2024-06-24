@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchMediasByIdPhotographerThunk } from "../../redux/thunks/mediasThunks";
 import { MediaCard } from "../mediaCard/MediaCard";
+import { Loader } from "../loader/Loader";
 import "./mediaCardContainer.scss";
 
 export const MediaCardContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const medias = useSelector((state) => state.medias.medias);
+  const loading = useSelector((state) => state.medias.loading);
+  const error = useSelector((state) => state.medias.error);
   const [sortCriteria, setSortCriteria] = useState("date");
 
   useEffect(() => {
@@ -25,12 +28,15 @@ export const MediaCardContainer = () => {
         case "name":
           return a.title.localeCompare(b.title);
         case "date":
-          return new Date(b.date) - new Date(a.date);
+          return new Date(a.date) - new Date(b.date);
         default:
           return 0;
       }
     });
   };
+
+  if (loading) return <Loader />;
+  if (error) return <div>Erreur : {error}</div>;
 
   return (
     <section className="section-photographer-gallery">

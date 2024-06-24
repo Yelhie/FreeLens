@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotographersThunk } from "../../redux/thunks/photographersThunks";
 import { PhotographerCard } from "../photographerCard/PhotographerCard";
+import { Loader } from "../loader/Loader";
 import "./cardsContainer.scss";
 
 export const CardsContainer = () => {
@@ -14,13 +15,8 @@ export const CardsContainer = () => {
     dispatch(fetchPhotographersThunk());
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Chargement...</div>;
-  }
-
-  if (error) {
-    return <div>Erreur: {error}</div>;
-  }
+  if (loading) return <Loader />;
+  if (error) return <div>Erreur : {error}</div>;
 
   return (
     <section className="photographer-section">

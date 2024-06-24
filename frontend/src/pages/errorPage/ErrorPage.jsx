@@ -1,5 +1,9 @@
-import React from "react";
+import { Loader } from "../../components/loader/Loader";
 
 export const ErrorPage = () => {
-  return <div>ErrorPage</div>;
+  return (
+    <>
+      <Loader />
+    </>
+  );
 };
