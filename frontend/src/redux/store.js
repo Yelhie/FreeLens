@@ -7,6 +7,7 @@ const store = configureStore({
     photographers: photographersReducer,
     medias: mediasReducer,
   },
+  // devTools: false,
 });
 
 export default store;

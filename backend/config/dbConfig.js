@@ -4,6 +4,7 @@ require("dotenv").config();
 // Exportation de la configuration de la base de données
 const dbConfig = {
   db: process.env.MONGO_URL,
+  secret: process.env.JWT_SECRET,
 };
 
 // Connexion à la base de données MongoDB

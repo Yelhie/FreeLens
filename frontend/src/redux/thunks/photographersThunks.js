@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  fetchAllPhotographersAPI,
+  fetchAllValidPhotographersAPI,
   fetchPhotographerByIdAPI,
 } from "../utils/api";
 
 export const fetchPhotographersThunk = createAsyncThunk(
   "photographers/fetchPhotographers",
   async () => {
-    const data = await fetchAllPhotographersAPI();
+    const data = await fetchAllValidPhotographersAPI();
     return data;
   }
 );

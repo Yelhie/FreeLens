@@ -1,7 +1,7 @@
-export const fetchAllPhotographersAPI = async () => {
+export const fetchAllValidPhotographersAPI = async () => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/photographes/`
+      `${import.meta.env.VITE_API_URL}/api/photographes/valid`
     );
     if (!response.ok) {
       throw new Error("Erreur réseau");

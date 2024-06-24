@@ -7,10 +7,7 @@ const swaggerOptions = require("./config/swagger.config");
 
 const port = process.env.PORT || 3000;
 const app = express();
-
 const specs = swaggerJsdoc(swaggerOptions);
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 dbConnection();
 
@@ -23,6 +20,7 @@ app.use(cors());
 
 // Routes
 app.use("/api/", require("./routes/index.routes"));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use("/uploads", express.static("uploads"));
 
 app.listen(port, () => {

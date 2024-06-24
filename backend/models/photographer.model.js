@@ -4,27 +4,45 @@ const photographerSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.userId;
+      },
     },
     avatarPath: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.userId;
+      },
     },
     city: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.userId;
+      },
     },
     country: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.userId;
+      },
     },
     price: {
       type: Number,
-      required: true,
+      required: function () {
+        return !this.userId;
+      },
     },
     apropos: {
       type: String,
       maxlength: 230,
+      required: function () {
+        return !this.userId;
+      },
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
     },
   },
   { collection: "photographers" }

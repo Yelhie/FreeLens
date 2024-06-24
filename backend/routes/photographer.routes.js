@@ -3,6 +3,7 @@ const router = express.Router();
 const upload = require("../middleware/upload.middleware");
 const {
   getAllPhotographers,
+  getAllValidPhotographers,
   getPhotographer,
   addPhotographer,
   editPhotographer,
@@ -64,9 +65,11 @@ const {
  *                   }
  *                 ]
  */
-// Routes pour récupérer tout les photographes
+// Routes pour récupérer tout les profils des photographes
 router.get("/", getAllPhotographers);
 
+// Routes pour récupérer tous les profils de photographes dont les informations sont valides
+router.get("/valid", getAllValidPhotographers);
 /**
  * @swagger
  * /api/photographers/{id}:

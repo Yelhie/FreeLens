@@ -1,12 +1,12 @@
 const fs = require("fs");
 const path = require("path");
-const PhotographeModel = require("../models/photographer.model");
+const PhotographerModel = require("../models/photographer.model");
 
 // Récupère tous les profils de photographes (page principal)
 module.exports.getAllPhotographers = async (req, res) => {
   try {
-    const photographes = await PhotographeModel.find();
-    res.status(200).json(photographes);
+    const photographers = await PhotographerModel.find();
+    res.status(200).json(photographers);
   } catch (error) {
     res.status(500).json({
       message: "Erreur lors de la récupération des profils des photographes",
@@ -15,11 +15,32 @@ module.exports.getAllPhotographers = async (req, res) => {
   }
 };
 
-// Récupère les infos d'un photographe (profil)
+// Récupère tous les profils de photographes dont les informations sont valides
+module.exports.getAllValidPhotographers = async (req, res) => {
+  try {
+    const photographers = await PhotographerModel.find({
+      name: { $exists: true, $ne: "" },
+      avatarPath: { $exists: true, $ne: "" },
+      city: { $exists: true, $ne: "" },
+      country: { $exists: true, $ne: "" },
+      price: { $exists: true, $ne: "" },
+      apropos: { $exists: true, $ne: "" },
+    });
+    res.json(photographers);
+  } catch (error) {
+    res.status(500).json({
+      message:
+        "Erreur lors de la récupération des profils photographes valdies",
+      error: error,
+    });
+  }
+};
+
+// Récupère les infos d'un compte photographe via ID
 module.exports.getPhotographer = async (req, res) => {
   try {
-    const photographes = await PhotographeModel.findById(req.params.id);
-    res.status(200).json(photographes);
+    const photographer = await PhotographerModel.findById(req.params.id);
+    res.status(200).json(photographer);
   } catch (error) {
     res.status(500).json({
       message: "Erreur lors de la récupération des informations du photographe",
@@ -31,14 +52,14 @@ module.exports.getPhotographer = async (req, res) => {
 //Ajoute un profil de photographe
 module.exports.addPhotographer = async (req, res) => {
   try {
-    const newPhotographes = await PhotographeModel.create({
+    const newPhotographer = await PhotographerModel.create({
       name: req.body.name,
       avatarPath: req.file ? req.file.path : null,
       city: req.body.city,
       country: req.body.country,
       price: req.body.price,
     });
-    res.status(200).json(newPhotographes);
+    res.status(200).json(newPhotographer);
   } catch (error) {
     res.status(500).json({
       message: "Erreur lors de l'ajout d'un nouveau profil de photographe'",
@@ -59,13 +80,13 @@ module.exports.editPhotographer = async (req, res) => {
   }
 
   try {
-    const photographes = await PhotographeModel.findById(req.params.id);
+    const photographer = await PhotographerModel.findById(req.params.id);
 
-    if (!photographes) {
+    if (!photographer) {
       return res.status(404).json({ message: "Le profil n'existe pas" });
     }
 
-    const updatePhotographe = await PhotographeModel.findByIdAndUpdate(
+    const updatePhotographer = await PhotographerModel.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -73,7 +94,7 @@ module.exports.editPhotographer = async (req, res) => {
       }
     );
 
-    res.status(200).json(updatePhotographe);
+    res.status(200).json(updatePhotographer);
   } catch (error) {
     res.status(500).json({
       message: "Erreur lors de la mise à jour du profil",
@@ -85,16 +106,16 @@ module.exports.editPhotographer = async (req, res) => {
 //supprimer un profil de photographe via son ID
 module.exports.deletePhotographer = async (req, res) => {
   try {
-    const photographe = await PhotographeModel.findById(req.params.id);
+    const photographer = await PhotographerModel.findById(req.params.id);
 
-    if (!photographe) {
+    if (!photographer) {
       return res.status(404).json({ message: "Le profil n'existe pas" });
     }
 
     // Vérifiez si avatarPath est défini et non vide
-    if (photographe.avatarPath) {
+    if (photographer.avatarPath) {
       // Chemin de l'image à supprimer
-      const avatarPath = path.join(__dirname, "..", photographe.avatarPath);
+      const avatarPath = path.join(__dirname, "..", photographer.avatarPath);
 
       // Suppression de l'image du système
       fs.unlink(avatarPath, async (err) => {
@@ -108,7 +129,7 @@ module.exports.deletePhotographer = async (req, res) => {
 
         // Suppression du profil de la base de données
         try {
-          await PhotographeModel.deleteOne({ _id: req.params.id });
+          await PhotographerModel.deleteOne({ _id: req.params.id });
           res.status(200).json({
             message: `Le profil de photographe ${req.params.id} a été supprimé de la base de données et l'image d'avatar associée à ce dernier a été supprimée du système.`,
           });
@@ -122,7 +143,7 @@ module.exports.deletePhotographer = async (req, res) => {
       });
     } else {
       // Si avatarPath n'est pas défini, supprime le profil sans tenter de supprimer le fichier avatar
-      await PhotographeModel.deleteOne({ _id: req.params.id });
+      await PhotographerModel.deleteOne({ _id: req.params.id });
       res.status(200).json({
         message: `Le profil ${req.params.id} a été supprimé, mais aucune image d'avatar qui lui était associée n'a été trouvée.`,
       });
