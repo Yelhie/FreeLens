@@ -131,6 +131,7 @@ body {
   max-width: var(--max-width);
   margin: auto;
   padding: 20px;
+  color: var(--color-mid);
 }
 
 // Styles des boutons
@@ -155,6 +156,7 @@ Link,
 a {
   color: var(--color-mid);
   text-decoration: none;
+  cursor: pointer;
 }
 
 Link,

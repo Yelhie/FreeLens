@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPhotographersThunk } from "../../redux/thunks/photographersThunks";
+import { fetchValidPhotographersThunk } from "../../redux/thunks/photographersThunks";
 import { PhotographerCard } from "../photographerCard/PhotographerCard";
 import { Loader } from "../loader/Loader";
 import "./cardsContainer.scss";
@@ -12,7 +12,7 @@ export const CardsContainer = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchPhotographersThunk());
+    dispatch(fetchValidPhotographersThunk());
   }, [dispatch]);
 
   if (loading) return <Loader />;

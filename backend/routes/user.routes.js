@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/users/register:
+ * /api/user/register:
  *   post:
  *     summary: Register a new user
  *     tags: [Users]
@@ -32,7 +32,7 @@ const router = express.Router();
  *                 description: The password for the new user.
  *               role:
  *                 type: string
- *                 description: The role of the new user (e.g., "client", "photographer").
+ *                 description: The role of the new user ("client", "photographer").
  *     responses:
  *       200:
  *         description: User registered successfully
@@ -44,7 +44,7 @@ router.post("/register", registerUser);
 
 /**
  * @swagger
- * /api/users/login:
+ * /api/user/login:
  *   post:
  *     summary: User login
  *     tags: [Users]

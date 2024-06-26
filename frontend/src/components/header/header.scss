@@ -22,9 +22,27 @@ header {
     gap: 15px;
 
     li {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      fill: var(--color-mid);
+      color: var(--color-mid);
+
       a {
         font-size: 20px;
       }
+    }
+
+    .account-icon-container:hover .signup-icon,
+    .account-icon-container:hover .login-icon {
+      fill: var(--color-primary);
+    }
+
+    .account-icon-container:hover span,
+    .signup-icon,
+    .login-icon {
+      color: var(--color-primary);
+      cursor: pointer;
     }
   }
 }

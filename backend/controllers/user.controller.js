@@ -3,12 +3,28 @@ const PhotographerModel = require("../models/photographer.model");
 const { createSession } = require("./session.controller");
 const { generateToken } = require("../utils/jwt.utils");
 
+// Fonction pour valider le mot de passe de l'utilisateur lors de l'enregistrement
+// en utilisant une expression régulière pour vérifier si le mot de passe est assez fort
+const validatePassword = (password) => {
+  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+  return regex.test(password);
+};
+
 const registerUser = async (req, res) => {
   const { username, email, password, role } = req.body;
   // Vérifis si tous les champs requis sont présents
   if (!username || !email || !password || !role) {
     return res.status(400).json({ message: "Tous les champs sont requis." });
   }
+
+  // Vérifie si le mot de passe est assez fort selon la fonction validatePassword
+  if (!validatePassword(password)) {
+    return res.status(400).json({
+      message:
+        "Le mot de passe n'est pas assez fort. Il doit comporter au moins 8 caractères dont un chiffre, une lettre minuscule, une lettre majuscule et un caractère spécial.",
+    });
+  }
+
   // Vérifie si l'utilisateur existe déjà dans la base de données
   try {
     const existingUser = await UserModel.findOne({

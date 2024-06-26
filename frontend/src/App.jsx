@@ -6,6 +6,7 @@ import "./style.scss";
 import { HomePage } from "./pages/homePage/HomePage";
 import { ErrorPage } from "./pages/errorPage/ErrorPage";
 import { PhotographerPage } from "./pages/photographerPage/PhotographerPage";
+import { RegisterPage } from "./pages/registerPage/RegisterPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/photographer/:id" element={<PhotographerPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

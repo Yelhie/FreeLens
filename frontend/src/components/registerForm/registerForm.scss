@@ -1,0 +1,140 @@
+.section-register-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form-container {
+    display: flex;
+    overflow: hidden;
+    border-radius: 8px;
+
+    h2 {
+      font-size: 35px;
+      color: var(--color-primary);
+    }
+
+    .form-img {
+      width: 480px;
+      height: 650px;
+      object-fit: cover;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+      background-color: rgba(var(--color-secondary-rgb), 0.28);
+      width: 400px;
+
+      p {
+        font-style: italic;
+        padding: 10px 0 30px 0;
+      }
+
+      span {
+        color: var(--color-primary);
+        cursor: pointer;
+      }
+
+      span:hover {
+        color: var(--color-mid);
+      }
+
+      .input-container {
+        display: grid;
+        grid-template-columns: 10% 90%;
+
+        .icon-register-form {
+          margin: 20px 0;
+          fill: var(--color-mid);
+          height: 36px;
+        }
+
+        .input-register-form {
+          font-size: 15px;
+          font-style: italic;
+          border: none;
+          border-bottom: 1px solid var(--color-mid);
+          background-color: rgba(255, 255, 255, 0);
+          width: 290px;
+          color: var(--color-mid);
+          margin: 20px 0;
+
+          &::placeholder {
+            color: var(--color-mid);
+          }
+
+          &:focus {
+            font-style: normal;
+            color: var(--color-mid);
+            fill: var(--color-mid);
+            border: none;
+            outline: none;
+            border-bottom: 1px solid var(--color-primary);
+          }
+        }
+      }
+
+      .select-role {
+        padding: 25px 0;
+        width: 310px;
+        display: flex;
+        justify-content: space-between;
+
+        // Cache la case à cocher originale pour outrepasser
+        // le style par défaut des navigateurs
+        [type="checkbox"] {
+          visibility: hidden;
+          position: absolute;
+        }
+
+        // Crée un nouveau style de case à cocher
+        [type="checkbox"] + label {
+          position: relative;
+          padding-left: 25px;
+          cursor: pointer;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 4px;
+            background-color: var(--color-mid);
+            border: 2px solid var(--color-dark);
+          }
+
+          &::after {
+            content: "✔";
+            font-size: 18px;
+            position: absolute;
+            color: var(--color-primary);
+            left: 1px;
+            top: 1px;
+            width: 19px;
+            height: 19px;
+            opacity: 0;
+          }
+        }
+
+        // Change l'apparence lorsque la case est cochée
+        [type="checkbox"]:checked + label::after {
+          opacity: 1;
+        }
+      }
+
+      .error {
+        color: var(--color-primary);
+        margin-bottom: 10px;
+      }
+
+      button {
+        position: absolute;
+        bottom: 30px;
+      }
+    }
+  }
+}
