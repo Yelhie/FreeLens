@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUserThunk } from "../../redux/thunks/usersThunks";
 import { openLoginForm } from "../../redux/slices/modalSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { closeModal } from "../../redux/slices/modalSlice";
+
 // Import icones et styles
 import AccountIcon from "../../assets/icons/account_b.svg?react";
 import LockIcon from "../../assets/icons/lock.svg?react";
@@ -60,7 +64,19 @@ export const RegisterForm = () => {
     }
 
     setClientError(null);
-    dispatch(registerUserThunk(userData));
+    dispatch(registerUserThunk(userData))
+      .then(() => {
+        // Fermer le modal après la réussite de l'enregistrement
+        dispatch(closeModal());
+        // Afficher la notification de succès
+        toast("Enregistrement effectué avec succès!", {
+          className: "success-register-bar",
+        });
+      })
+      .catch((error) => {
+        // Gérer l'erreur si nécessaire
+        console.error("Erreur lors de l'enregistrement:", error);
+      });
   };
 
   return (
