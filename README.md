@@ -12,6 +12,7 @@ Projet personnel de création d'un site d'agence fictive de photographes freelan
 - Multer
 - jsonwebtoken
 - bcryptjs
+- TypeScript
 
 **Base de Données**
 
@@ -48,6 +49,7 @@ Projet personnel de création d'un site d'agence fictive de photographes freelan
   - Création d'un middleware pour protéger les routes nécessitant une authentification.
   - Ajout d'un pattern exigeant un minimum de 8 caractères, incluant au moins une lettre, un chiffre, une majuscule, une minuscule et un symbole pour les mots de passe.
 - **Documentation API** : Création avec Swagger UI et JSDoc.
+- **Typage** Migration des fichiers .js vers TypeScript et ajout de typage.
 
 **Frontend**
 

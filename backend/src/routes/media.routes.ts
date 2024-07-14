@@ -1,13 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const upload = require("../middleware/upload.middleware");
-const {
+import express, { Router } from "express";
+import { uploadMiddleware } from "../middleware/upload.middleware";
+import {
   uploadMedia,
   getMediasByPhotographerId,
   deleteMedia,
   updateMedia,
-} = require("../controllers/media.controller");
+} from "../controllers/media.controller";
 
+const router: Router = express.Router();
 /**
  * @swagger
  * tags:
@@ -104,7 +104,7 @@ router.get("/:photographerId", getMediasByPhotographerId);
  *         description: Server error
  */
 // Route pour upload un fichier media
-router.post("/", upload.single("filePath"), uploadMedia);
+router.post("/", uploadMiddleware.single("filePath"), uploadMedia);
 
 /**
  * @swagger
@@ -169,4 +169,4 @@ router.patch("/:id", updateMedia);
 // Route pour supprimer un fichier media via son ID
 router.delete("/:id", deleteMedia);
 
-module.exports = router;
+export default router;

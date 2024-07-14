@@ -1,5 +1,5 @@
-const multer = require("multer");
-const path = require("path");
+import multer from "multer";
+import path from "path";
 
 // Configuration de Multer pour le stockage des fichiers
 const storage = multer.diskStorage({
@@ -12,7 +12,11 @@ const storage = multer.diskStorage({
 });
 
 // Configuration de Multer avec des options supplémentaires
-const fileFilter = (req, file, cb) => {
+const fileFilter = (
+  req: Express.Request,
+  file: Express.Multer.File,
+  cb: multer.FileFilterCallback
+): void => {
   const filetypes = /jpeg|jpg|png|webp/;
   const mimetype = filetypes.test(file.mimetype);
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -20,14 +24,14 @@ const fileFilter = (req, file, cb) => {
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    cb("Error: Images Only!");
+    cb(new Error("Error: Images Only!"));
   }
 };
 
-const upload = multer({
+const uploadMiddleware = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits: { fileSize: 1024 * 1024 * 5 }, // Limite de taille de fichier à 5MB
 });
 
-module.exports = upload;
+export { uploadMiddleware };

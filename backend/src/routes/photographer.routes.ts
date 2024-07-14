@@ -1,15 +1,15 @@
-const express = require("express");
-const router = express.Router();
-const upload = require("../middleware/upload.middleware");
-const {
+import express, { Router } from "express";
+import { uploadMiddleware } from "../middleware/upload.middleware";
+import {
   getAllPhotographers,
   getAllValidPhotographers,
   getPhotographer,
   addPhotographer,
   editPhotographer,
   deletePhotographer,
-} = require("../controllers/photographer.controller");
+} from "../controllers/photographer.controller";
 
+const router: Router = express.Router();
 /**
  * @swagger
  * tags:
@@ -226,7 +226,7 @@ router.get("/:id", getPhotographer);
  *         description: Server error
  */
 // Route pour ajouter un photographe
-router.post("/", upload.single("avatarPath"), addPhotographer);
+router.post("/", uploadMiddleware.single("avatarPath"), addPhotographer);
 
 /**
  * @swagger
@@ -277,7 +277,7 @@ router.post("/", upload.single("avatarPath"), addPhotographer);
  *         description: Server error
  */
 // Route pour modifier un profil de photographe via son ID
-router.put("/:id", upload.single("avatarPath"), editPhotographer);
+router.put("/:id", uploadMiddleware.single("avatarPath"), editPhotographer);
 
 /**
  * @swagger
@@ -304,4 +304,4 @@ router.put("/:id", upload.single("avatarPath"), editPhotographer);
 // Route pour supprimer un profil de photographe via son ID
 router.delete("/:id", deletePhotographer);
 
-module.exports = router;
+export default router;

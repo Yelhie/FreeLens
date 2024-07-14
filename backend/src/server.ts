@@ -1,12 +1,12 @@
-const express = require("express");
-const { dbConnection } = require("./config/dbConfig.js");
-const cors = require("cors");
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
-const swaggerOptions = require("./config/swagger.config");
+import express, { Application } from "express";
+import { dbConnection } from "./config/dbConfig";
+import cors from "cors";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+import swaggerOptions from "./config/swagger.config";
 
-const port = process.env.PORT || 3000;
-const app = express();
+const port: number | string = process.env.PORT || 3000;
+const app: Application = express();
 const specs = swaggerJsdoc(swaggerOptions);
 
 dbConnection();

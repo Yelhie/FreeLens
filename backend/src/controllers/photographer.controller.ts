@@ -1,22 +1,33 @@
-const fs = require("fs");
-const path = require("path");
-const PhotographerModel = require("../models/photographer.model");
+import * as fs from "fs";
+import * as path from "path";
+import { Request, Response } from "express";
+import { PhotographerModel } from "../models/photographer.model";
+import { UserRequestBody, PhotographerRequestBody } from "../types/express";
 
 // Récupère tous les profils de photographes (page principal)
-module.exports.getAllPhotographers = async (req, res) => {
+export const getAllPhotographers = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
-    const photographers = await PhotographerModel.find();
+    const photographers = await PhotographerModel.find().lean();
     res.status(200).json(photographers);
+    return;
   } catch (error) {
-    res.status(500).json({
-      message: "Erreur lors de la récupération des profils des photographes",
-      error: error.message,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({
+        message: "Erreur lors de la récupération des profils des photographes",
+        error: error.message,
+      });
+    }
   }
 };
 
 // Récupère tous les profils de photographes dont les informations sont valides
-module.exports.getAllValidPhotographers = async (req, res) => {
+export const getAllValidPhotographers = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const photographers = await PhotographerModel.find({
       name: { $exists: true, $ne: "" },
@@ -28,53 +39,70 @@ module.exports.getAllValidPhotographers = async (req, res) => {
     });
     res.json(photographers);
   } catch (error) {
-    res.status(500).json({
-      message:
-        "Erreur lors de la récupération des profils photographes valdies",
-      error: error,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({
+        message:
+          "Erreur lors de la récupération des profils photographes valdies",
+        error: error,
+      });
+      return;
+    }
   }
 };
 
 // Récupère les infos d'un compte photographe via ID
-module.exports.getPhotographer = async (req, res) => {
+export const getPhotographer = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const photographer = await PhotographerModel.findById(req.params.id);
     res.status(200).json(photographer);
   } catch (error) {
-    res.status(500).json({
-      message: "Erreur lors de la récupération des informations du photographe",
-      error: error.message,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({
+        message:
+          "Erreur lors de la récupération des informations du photographe",
+        error: error.message,
+      });
+    }
   }
 };
 
 //Ajoute un profil de photographe
-module.exports.addPhotographer = async (req, res) => {
+export const addPhotographer = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const newPhotographer = await PhotographerModel.create({
-      name: req.body.name,
+      name: (req.body as UserRequestBody).name,
       avatarPath: req.file ? req.file.path : null,
-      city: req.body.city,
-      country: req.body.country,
-      price: req.body.price,
-      apropos: req.body.apropos,
+      city: (req.body as UserRequestBody).city,
+      country: (req.body as UserRequestBody).country,
+      price: (req.body as PhotographerRequestBody).price,
+      apropos: (req.body as UserRequestBody).apropos,
     });
     res.status(200).json(newPhotographer);
   } catch (error) {
-    res.status(500).json({
-      message: "Erreur lors de l'ajout d'un nouveau profil de photographe'",
-      error: error.message,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({
+        message: "Erreur lors de l'ajout d'un nouveau profil de photographe'",
+        error: error.message,
+      });
+    }
   }
 };
 
 //Modifie un profil de photographe via son ID
-module.exports.editPhotographer = async (req, res) => {
-  const { apropos } = req.body;
+export const editPhotographer = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { apropos } = req.body as UserRequestBody;
 
   if (apropos && apropos.length > 230) {
-    return res.status(400).json({
+    res.status(400).json({
       message:
         "Le champ 'à propos' ne peut pas contenir plus de 230 caractères.",
     });
@@ -84,7 +112,8 @@ module.exports.editPhotographer = async (req, res) => {
     const photographer = await PhotographerModel.findById(req.params.id);
 
     if (!photographer) {
-      return res.status(404).json({ message: "Le profil n'existe pas" });
+      res.status(404).json({ message: "Le profil n'existe pas" });
+      return;
     }
 
     const updatePhotographer = await PhotographerModel.findByIdAndUpdate(
@@ -96,21 +125,28 @@ module.exports.editPhotographer = async (req, res) => {
     );
 
     res.status(200).json(updatePhotographer);
+    return;
   } catch (error) {
-    res.status(500).json({
-      message: "Erreur lors de la mise à jour du profil",
-      error: error.message,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({
+        message: "Erreur lors de la mise à jour du profil",
+        error: error.message,
+      });
+    }
   }
 };
 
 //supprimer un profil de photographe via son ID
-module.exports.deletePhotographer = async (req, res) => {
+export const deletePhotographer = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const photographer = await PhotographerModel.findById(req.params.id);
 
     if (!photographer) {
-      return res.status(404).json({ message: "Le profil n'existe pas" });
+      res.status(404).json({ message: "Le profil n'existe pas" });
+      return;
     }
 
     // Vérifiez si avatarPath est défini et non vide
@@ -135,11 +171,13 @@ module.exports.deletePhotographer = async (req, res) => {
             message: `Le profil de photographe ${req.params.id} a été supprimé de la base de données et l'image d'avatar associée à ce dernier a été supprimée du système.`,
           });
         } catch (dbError) {
-          res.status(500).json({
-            message:
-              "Erreur lors de la suppression du profil dans la base de données",
-            error: dbError.message,
-          });
+          if (dbError instanceof Error) {
+            res.status(500).json({
+              message:
+                "Erreur lors de la suppression du profil dans la base de données",
+              error: dbError.message,
+            });
+          }
         }
       });
     } else {
@@ -150,9 +188,11 @@ module.exports.deletePhotographer = async (req, res) => {
       });
     }
   } catch (error) {
-    res.status(500).json({
-      message: "Erreur lors de la suppression du profil",
-      error: error.message,
-    });
+    if (error instanceof Error) {
+      res.status(500).json({
+        message: "Erreur lors de la suppression du profil de photographe",
+        error: error.message,
+      });
+    }
   }
 };
