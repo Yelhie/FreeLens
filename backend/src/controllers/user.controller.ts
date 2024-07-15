@@ -4,7 +4,11 @@ import { createSession } from "./session.controller";
 import { UserModel } from "../models/user.model";
 import { PhotographerModel } from "../models/photographer.model";
 import { ClientModel } from "../models/client.model";
-import { UserRequestBody } from "../types/express";
+import {
+  UserRequestBody,
+  PhotographerRequestBody,
+  ClientRequestBody,
+} from "../types/express";
 
 // Fonction pour valider le mot de passe de l'utilisateur lors de l'enregistrement
 // en utilisant une expression régulière pour vérifier si le mot de passe est assez fort
@@ -57,16 +61,18 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
 
     // Vérifie si l'utilisateur à choisi le rôle client ou photographe et crée un profil
     // client ou photographe en base et le lie à l'utilisateur
-    if (role === "Photographer") {
+    if ((req.body as PhotographerRequestBody).role === "Photographer") {
       const photographer = new PhotographerModel({
         userId: user._id,
       });
       await photographer.save();
-    } else if (role === "Client") {
+      console.log("Photographer profile created:", photographer);
+    } else if ((req.body as ClientRequestBody).role === "Client") {
       const client = new ClientModel({
         userId: user._id,
       });
       await client.save();
+      console.log("Client profile created:", client);
     }
 
     res.status(201).json({ user, token });

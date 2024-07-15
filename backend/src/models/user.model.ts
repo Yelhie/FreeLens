@@ -28,7 +28,7 @@ const UserSchema = new Schema<UserDocument>(
     role: {
       type: String,
       required: [true, "Rôle requis"],
-      enum: ["client", "photographer"],
+      enum: ["Client", "Photographer"],
     },
     // Détermine le shéma de la collection à utiliser pour le profil de photographe
     photographerProfile: {

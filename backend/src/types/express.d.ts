@@ -16,15 +16,18 @@ interface UserRequestBody {
 interface PhotographerRequestBody extends UserBase {
   role: "Photographer";
   price: number;
+  userId: mongoose.Schema.Types.ObjectId;
 }
 
 interface ClientRequestBody extends UserBase {
   role: "Client";
+  userId: mongoose.Schema.Types.ObjectId;
   // Pas de propriété spécifique pour client pour le moment
 }
 
 interface AdminRequestBody extends UserBase {
   role: "Admin";
+  userId: mongoose.Schema.Types.ObjectId;
   // Pas de propriété spécifique pour l'admin pour le moment
 }
 
