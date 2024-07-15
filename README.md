@@ -70,7 +70,7 @@ Projet personnel de création d'un site d'agence fictive de photographes freelan
 npm install
 
 # Démarrer le serveur local (port 3000)
-npm run server start
+npm run dev
 
 ```
 

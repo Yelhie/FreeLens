@@ -31,6 +31,7 @@ interface AdminRequestBody extends UserBase {
 interface MediaRequestBody {
   title: string;
   photographerId: string;
+  filePath: string;
   likes: number;
   date: Date;
 }

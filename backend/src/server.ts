@@ -4,6 +4,7 @@ import cors from "cors";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import swaggerOptions from "./config/swagger.config";
+import indexRoutes from "./routes/index.routes";
 
 const port: number | string = process.env.PORT || 3000;
 const app: Application = express();
@@ -19,9 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
-app.use("/api/", require("./routes/index.routes"));
+app.use("/api/", indexRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("src/uploads"));
 
 app.listen(port, () => {
   console.log(`Serveur en cours d'exécution sur le port : ${port}`);

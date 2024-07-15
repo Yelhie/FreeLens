@@ -4,7 +4,7 @@ import path from "path";
 // Configuration de Multer pour le stockage des fichiers
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Dossier où les images sont stockées sur le système
+    cb(null, "src/uploads/"); // Dossier où les images sont stockées sur le système
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname)); // Renomme le fichier avec un timestamp
