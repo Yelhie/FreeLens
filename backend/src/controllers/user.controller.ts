@@ -66,13 +66,11 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
         userId: user._id,
       });
       await photographer.save();
-      console.log("Photographer profile created:", photographer);
     } else if ((req.body as ClientRequestBody).role === "Client") {
       const client = new ClientModel({
         userId: user._id,
       });
       await client.save();
-      console.log("Client profile created:", client);
     }
 
     res.status(201).json({ user, token });

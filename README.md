@@ -2,6 +2,8 @@
 
 Projet personnel de création d'un site d'agence fictive de photographes freelance en Fullstack.
 
+**Important** : Considérant cette approche bien plus stimulante, instructive et amusante, le projet est réalisé volontairement sans planification des fonctionnalités afin de m’inciter à adapter et corriger le code en fonction de l'évolution et des besoins qui apparaîtront au fur et à mesure. Cela me permet aussi de travailler sur les tests, sur l'apparition et la résolution de bugs, mais également d'en apprendre davantage sur la planification, la méthodologie et les problématiques rencontrées lors de la réalisation de nouveaux projets.
+
 ## Technologies Utilisées
 
 **Backend**
