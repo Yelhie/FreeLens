@@ -22,7 +22,7 @@ interface UserDocument extends Document {
 // Interface représentant un modèle d'utilisateur dans MongoDB
 interface UserModel extends Model<UserDocument> {}
 
-// Interface représentant un document photographe dans MongoDB
+// Interface représentant un photographe dans MongoDB
 interface PhotographerDocument extends Document {
   name: string;
   avatarPath: string;
@@ -33,7 +33,7 @@ interface PhotographerDocument extends Document {
   userId: mongoose.Schema.Types.ObjectId;
 }
 
-// Interface représentant un document média dans MongoDB
+// Interface représentant un  média dans MongoDB
 interface MediaDocument extends Document {
   title: string;
   photographerId: string;
@@ -48,7 +48,9 @@ interface MediaModel extends Model<MediaDocument> {}
 // Interface représentant un document client dans MongoDB
 interface ClientDocument extends Document {
   name: string;
-  email: string;
+  city: string;
+  country: string;
+  userId: mongoose.Schema.Types.ObjectId;
 }
 
 export {

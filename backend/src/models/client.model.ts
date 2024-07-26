@@ -1,13 +1,35 @@
 import mongoose, { Schema, Model } from "mongoose";
 import { ClientDocument } from "../types/mongoose";
 
-//*****/ FICHIER TEMPORAIRE /*****/
-//*****/ A MODIFIER /*****/
-
-const ClientSchema = new Schema<ClientDocument>({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-});
+// Définition du schéma de client dans MongoDB
+const ClientSchema: Schema<ClientDocument> = new Schema(
+  {
+    name: {
+      type: String,
+      required: function (this: ClientDocument) {
+        return !this.userId;
+      },
+    },
+    city: {
+      type: String,
+      required: function (this: ClientDocument) {
+        return !this.userId;
+      },
+    },
+    country: {
+      type: String,
+      required: function (this: ClientDocument) {
+        return !this.userId;
+      },
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
+  },
+  { collection: "clients" }
+);
 
 const ClientModel: Model<ClientDocument> = mongoose.model<ClientDocument>(
   "Client",
